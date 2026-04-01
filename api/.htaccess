@@ -1,0 +1,12 @@
+# Bloqueia acesso direto a arquivos sensíveis
+<FilesMatch "\.(json|log|done)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Bloqueia acesso a subpastas sensíveis
+RewriteEngine On
+RewriteRule ^logs/ - [F,L]
+RewriteRule ^pending/ - [F,L]
+RewriteRule ^tracked/ - [F,L]
+RewriteRule ^rate_limit/ - [F,L]

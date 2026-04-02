@@ -271,8 +271,8 @@ $utmify_payload = [
     ],
     "products" => [
         [
-            "id" => !empty($products[0]['id']) ? $products[0]['id'] : "prod_01",
-            "name" => !empty($products[0]['name']) ? $products[0]['name'] : "Worten Produto",
+            "id" => !empty($pending['products'][0]['id']) ? $pending['products'][0]['id'] : "prod_01",
+            "name" => !empty($pending['products'][0]['name']) ? $pending['products'][0]['name'] : "Worten Produto",
             "planId" => "plan_01",
             "planName" => "",
             "quantity" => 1,

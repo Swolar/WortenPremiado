@@ -296,7 +296,7 @@ body {
 /* ========== ROULETTE PAGE ========== */
 .roulette-page {
   text-align: center;
-  background: var(--worten-yellow);
+  background: #ffffff;
   margin: -20px -16px -30px;
   padding: 28px 20px 100px;
   min-height: calc(100vh - 56px);
@@ -323,8 +323,8 @@ body {
 
 /* Roulette stage */
 .roulette-stage {
-  width: 300px;
-  height: 300px;
+  width: 270px;
+  height: 270px;
   margin: 0 auto 28px;
   position: relative;
 }
@@ -338,12 +338,13 @@ body {
 }
 .light-dot {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   top: 50%;
   left: 50%;
-  box-shadow: 0 0 6px 2px currentColor;
+  box-shadow: 0 0 4px 1px currentColor;
+  opacity: 0.5;
 }
 
 /* Main wheel container */
@@ -351,11 +352,8 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: #1a1a1a;
-  box-shadow:
-    0 0 0 8px #1a1a1a,
-    0 0 0 10px rgba(255,255,255,0.06),
-    0 10px 40px rgba(0,0,0,0.5);
+  background: transparent;
+  box-shadow: none;
   z-index: 2;
 }
 
@@ -388,10 +386,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 58px;
-  height: 58px;
-  background: linear-gradient(180deg, #fff 0%, #e8e8e8 100%);
-  border: 5px solid #c8a800;
+  width: 60px;
+  height: 60px;
+  background: none;
+  border: none;
   border-radius: 50%;
   z-index: 10;
   display: flex;
@@ -399,9 +397,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow:
-    0 0 0 2px rgba(0,0,0,0.08),
-    0 4px 16px rgba(0,0,0,0.35);
+  box-shadow: none;
   transition: transform 0.2s ease;
 }
 .wheel-center:hover { transform: translate(-50%, -50%) scale(1.06); }
@@ -521,7 +517,7 @@ body {
 .modal.retry-modal .icon { filter: grayscale(1); opacity: 0.5; }
 .modal.retry-modal h3 { color: #888; }
 .modal.retry-modal .prize { color: #444; font-size: 20px; }
-.modal.retry-modal .modal-btn { background: var(--worten-yellow); color: var(--worten-dark); box-shadow: 0 4px 16px rgba(255,214,0,0.3); }
+.modal.retry-modal .modal-btn { background: #CC0033; color: #fff; box-shadow: 0 4px 16px rgba(204,0,51,0.3); }
 
 @keyframes modalIn {
   from { transform: scale(0.7); opacity: 0; }

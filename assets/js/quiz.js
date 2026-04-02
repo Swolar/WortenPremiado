@@ -2,32 +2,32 @@
 // Banners: 1.png (principal), 2.png (armazem), 3.png (entrega), 4.png (unboxing)
 const Q = [
   {
-    banner: "assets/images/1.png",
+    banner: "assets/images/0banner.png",
     q: "Com que frequência fazes compras online?",
     o: ["Sempre", "Às vezes", "Ocasionalmente", "Raramente"]
   },
   {
-    banner: "assets/images/6.png",
+    banner: "assets/images/2banner.png",
     q: "Qual é a tua opinião sobre a variedade de produtos disponíveis na Internet?",
     o: ["Excelente", "Boa", "Aceitável", "Insatisfatória"]
   },
   {
-    banner: "assets/images/3.png",
+    banner: "assets/images/1banner.png",
     q: "Como classificarias a eficiência da entrega dos produtos comprados na Internet?",
     o: ["Rápida", "Aceitável", "Lenta", "Só compro em loja"]
   },
   {
-    banner: "assets/images/2.png",
+    banner: "assets/images/4banner.png",
     q: "Em relação ao atendimento ao cliente da Worten, como o descreverias?",
     o: ["Excelente", "Bom", "Regular", "Insatisfatório"]
   },
   {
-    banner: "assets/images/5.png",
+    banner: "assets/images/5banner.png",
     q: "Por onde conheceste a Worten?",
     o: ["Pelo Instagram", "Pelo TikTok", "Pelo Facebook", "Na minha cidade"]
   },
   {
-    banner: "assets/images/4.png",
+    banner: "assets/images/6banner.png",
     q: "Recomendarias a Worten a um amigo ou familiar?",
     o: ["Com certeza", "Provavelmente", "Talvez", "Não"]
   }
@@ -46,8 +46,9 @@ const SEG = [
   { label: "10%",  sub: "DE DESCONTO", color: "#D84315" }
 ];
 
-// Controlled results: spin 1 = retry (index 3), spin 2 = 90% (index 6)
-const FORCED_RESULTS = [3, 6];
+// Para trazer um segmento ao topo, girar 360 - posição_do_segmento
+// Posições: 0°=5%, 45°=Retry, 90°=90%, 135°=75%, 180°=50%, 225°=Retry, 270°=5%, 315°=25%
+const FORCED_ANGLES = [25, 315]; // spin 1 = Retry, spin 2 = 90%
 
 // ========== STATE ==========
 let step = 0, sel = null, spins = 2, spinning = false, rot = 0, spinCount = 0;
@@ -106,12 +107,12 @@ function next() {
 // ========== ROULETTE PAGE ==========
 function showRoulette() {
   // Generate decorative light dots
-  const numLights = 24;
+  const numLights = 12;
   let lightsHTML = '';
   for (let i = 0; i < numLights; i++) {
     const angle = (i / numLights) * 360;
     const rad = angle * Math.PI / 180;
-    const radius = 156;
+    const radius = 142;
     const x = Math.cos(rad) * radius;
     const y = Math.sin(rad) * radius;
     const colors = ['#fff', '#CC0033', '#fff', '#CC0033'];
@@ -131,19 +132,11 @@ function showRoulette() {
     <div class="roulette-stage">
       <div class="lights-ring lights-animated">${lightsHTML}</div>
       <div class="wheel-bg">
-        <div class="wheel-pointer">
-          <svg width="30" height="36" viewBox="0 0 30 36">
-            <defs><filter id="ps"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/></filter></defs>
-            <polygon points="15,36 0,0 30,0" fill="#1a1a1a" filter="url(#ps)"/>
-            <polygon points="15,30 4,3 26,3" fill="#333"/>
-          </svg>
-        </div>
         <div class="wheel-clip">
-          <canvas id="rc" width="600" height="600"></canvas>
+          <img id="rc" src="assets/images/roletaimg.png" alt="Roleta" style="width:100%;height:100%;border-radius:50%;display:block;">
         </div>
-        <div class="wheel-center" onclick="spin()">
-          <span class="c-text">GIRE</span>
-          <span class="c-arrow">&#10148;</span>
+        <div class="wheel-center" onclick="spin()" style="background:none;box-shadow:none;border:none;">
+          <img src="assets/images/botaoimg.png" alt="Gire" style="width:60px;height:60px;pointer-events:none;">
         </div>
       </div>
     </div>
@@ -153,7 +146,6 @@ function showRoulette() {
     <p class="spins-left" id="sl"></p>
   </div>`;
 
-  drawWheel();
   startSocialProof();
 }
 
@@ -266,32 +258,34 @@ function spin() {
   const label = document.getElementById('sl');
   label.textContent = '';
 
-  // Determine forced result
-  const forcedIdx = FORCED_RESULTS[spinCount];
+  // Determine forced angle for image-based roulette
+  const forcedAngle = FORCED_ANGLES[spinCount];
+  const isRetry = spinCount === 0;
   spinCount++;
 
-  // Calculate target angle to land on forced segment
-  const fullSpins = (6 + Math.floor(Math.random() * 3)) * 360;
-  const landAngle = getAngleForSegment(forcedIdx);
-  const target = rot + fullSpins + landAngle - (rot % 360);
+  // Calculate target rotation — sem jitter, ângulo fixo
+  const fullSpins = 8 * 360;
+  const target = fullSpins + forcedAngle;
 
-  const canvas = document.getElementById('rc');
-  canvas.style.transition = 'transform 5.5s cubic-bezier(0.12, 0.75, 0.1, 1)';
-  canvas.style.transform = `rotate(${target}deg)`;
-  rot = target;
+  const wheel = document.getElementById('rc');
+  wheel.style.transition = 'none';
+  wheel.style.transform = 'rotate(0deg)';
+  // Force reflow para resetar posição
+  void wheel.offsetHeight;
+  wheel.style.transition = 'transform 5.5s cubic-bezier(0.12, 0.75, 0.1, 1)';
+  wheel.style.transform = `rotate(${target}deg)`;
 
   setTimeout(() => {
     spinning = false;
-    const won = SEG[forcedIdx];
 
-    if (won.retry) {
+    if (isRetry) {
       // Show retry modal
       showRetryModal();
       label.innerHTML = `Não foi desta vez! <strong>${spins} tentativa</strong> restante`;
     } else {
       // Show win modal with confetti
       launchConfetti();
-      showWinModal(won.label);
+      showWinModal('90%');
     }
 
     if (spins > 0) {

@@ -108,8 +108,7 @@ function dispatchTracking($pending, $key, $log_dir) {
 
     // Facebook CAPI
     $fb_pixels = [
-        ['id' => '2057846451722850', 'token' => 'EAAQkCjbaoJUBQnayuKdCCIfXCffFjE6oLDKxx4TUTtvlUlLYbVxJ0RlDtpSbmVZAMZC32bmO0rxbmABQHRwNviKTYRG22ocBo60Ns7cVA0ZAOF0qf4xEClszedGXBpk1IndoXpznvcETvdV0Bqzq4BsaUhomZCZBmsLgKzOz1L9rcwXsaLEE27ReeCZCXZCMQZDZD'],
-        ['id' => '920534473682926', 'token' => 'EAAUf3vZCz0hwBQvTz20OCddFMiKzzhN9z2dXtBDNhqYtUCty8ZAaq03xZADVZC8HtA4O4BbMqZBqvkyobXKIQyzBd36hdZCyCTg0cBM9ZAOZA52EJ8uQkPtow65ANJiGBvomO7Se9QUUzMLowgGUFFjUGzuji69Ly9JS3IZCMQj8DVXZA7Q1bD7kMcbEZAkFu9zbQZDZD']
+        ['id' => '1988037148802788', 'token' => 'EAAM1mqQqxU0BRFdxk2SHRpNZB7gLLah5tqIImd1TDDCb1cjYJtusDOuq3AkV2Gaam3c8TWWNacBTShMAeSWHjGNOAPAEjNu9aNnx97dlfGdQY4fUDidfPm5iy3CZCGpTpboe9czxNyQaa54JKD6xSUtzyB7MBCmQAXTlNyIPTngbpa0j3FBycOAmDuvJ20FgZDZD']
     ];
 
     $email = strtolower(trim($pending['payer']['email'] ?? ''));

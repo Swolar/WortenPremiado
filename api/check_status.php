@@ -20,7 +20,7 @@ define('UTMIFY_WEBHOOK_URL', 'https://api.utmify.com.br/v1/postback');
 define('UTMIFY_TOKEN', 'CUgtBZAPTKhCmfHtbtBTT3Q3yk9fRuutmHCh');
 
 // Headers
-header("Access-Control-Allow-Origin: https://sem-parar.com");
+header("Access-Control-Allow-Origin: https://premio-especial.com");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
@@ -202,7 +202,7 @@ foreach ($fb_pixels as $pixel) {
                 'event_time' => $event_time,
                 'event_id' => $transaction_id,
                 'action_source' => 'website',
-                'event_source_url' => $pending['referer'] ?? 'https://sem-parar.com',
+                'event_source_url' => $pending['referer'] ?? 'https://premio-especial.com',
                 'user_data' => [
                     'em' => $hashed_email ? [$hashed_email] : [],
                     'ph' => $hashed_phone ? [$hashed_phone] : [],

@@ -530,6 +530,7 @@ function renderStep5(el) {
 // ========== PAYMENT PROCESSING ==========
 async function processPayment() {
   const btn = document.getElementById('btnFinalize');
+  if (btn.disabled) return;
   btn.disabled = true;
   btn.textContent = 'A PROCESSAR...';
 
@@ -735,14 +736,38 @@ function showMultibancoConfirmation(data) {
 
 // ========== POLL STATUS ==========
 async function pollPaymentStatus(txnId, timerInterval) {
+  let errorCount = 0;
+  const maxErrors = 6;
+  const maxPolls = 60;
+  let pollCount = 0;
+
   const pollInterval = setInterval(async () => {
+    pollCount++;
+
+    if (pollCount > maxPolls) {
+      clearInterval(pollInterval);
+      if (timerInterval) clearInterval(timerInterval);
+      showPollError(txnId);
+      return;
+    }
+
     try {
       const res = await fetch('api/check_status.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: txnId })
       });
-      if (!res.ok) return;
+      if (!res.ok) {
+        errorCount++;
+        if (errorCount >= maxErrors) {
+          clearInterval(pollInterval);
+          if (timerInterval) clearInterval(timerInterval);
+          showPollError(txnId);
+        }
+        return;
+      }
+
+      errorCount = 0;
       const data = await res.json();
 
       if (data.status === 'COMPLETED') {
@@ -793,8 +818,28 @@ async function pollPaymentStatus(txnId, timerInterval) {
           `;
         }
       }
-    } catch(e) { /* silent */ }
+    } catch(e) {
+      errorCount++;
+      if (errorCount >= maxErrors) {
+        clearInterval(pollInterval);
+        if (timerInterval) clearInterval(timerInterval);
+        showPollError(txnId);
+      }
+    }
   }, 5000);
+}
+
+function showPollError(txnId) {
+  const statusEl = document.getElementById('paymentStatus');
+  if (statusEl) {
+    statusEl.innerHTML = `
+      <div class="ck-status-dot expired"></div>
+      <span>Não foi possível verificar o pagamento.
+        <a href="javascript:void(0)" onclick="location.reload()" style="color:#CC0033;font-weight:600">Tentar novamente</a>
+        ou contacte o suporte com o ID: ${txnId}
+      </span>
+    `;
+  }
 }
 
 // ========== HELPERS ==========

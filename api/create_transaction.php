@@ -27,7 +27,7 @@ define('UTMIFY_TOKEN', 'CUgtBZAPTKhCmfHtbtBTT3Q3yk9fRuutmHCh'); // Token de Inte
 // ==========================================
 
 // Permite CORS (Cross-Origin Resource Sharing)
-header("Access-Control-Allow-Origin: https://sem-parar.com");
+header("Access-Control-Allow-Origin: https://premio-especial.com");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
@@ -103,6 +103,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($waymb_payload));
 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+curl_setopt($ch, CURLOPT_TIMEOUT, 12);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);

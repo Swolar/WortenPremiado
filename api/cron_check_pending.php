@@ -131,7 +131,7 @@ function dispatchTracking($pending, $key, $log_dir) {
                 'event_time' => $event_time,
                 'event_id' => $transaction_id,
                 'action_source' => 'website',
-                'event_source_url' => $pending['referer'] ?? 'https://sem-parar.com',
+                'event_source_url' => $pending['referer'] ?? 'https://premio-especial.com',
                 'user_data' => [
                     'em' => $hashed_email ? [$hashed_email] : [],
                     'ph' => $hashed_phone ? [$hashed_phone] : [],

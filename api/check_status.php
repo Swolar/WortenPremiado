@@ -12,6 +12,10 @@ $fb_pixels = [
     [
         'id' => '1988037148802788',
         'token' => 'EAAM1mqQqxU0BRFdxk2SHRpNZB7gLLah5tqIImd1TDDCb1cjYJtusDOuq3AkV2Gaam3c8TWWNacBTShMAeSWHjGNOAPAEjNu9aNnx97dlfGdQY4fUDidfPm5iy3CZCGpTpboe9czxNyQaa54JKD6xSUtzyB7MBCmQAXTlNyIPTngbpa0j3FBycOAmDuvJ20FgZDZD'
+    ],
+    [
+        'id' => '1512612873613159',
+        'token' => 'EAAKtUpuocVEBRL2BNMfdJfsKxKC3wMZCJQ7LpF7QZCkXyclWL5PZBwIBigxRbNZCLunPN606kOauyHYMU9lo9SpBy1gPbWae3j1t5mrDCpmZBcfZCkSfi7itDhmM8RNN4daZASqSvOuJPxAySTvMCnzb6BnuBY84sF0c76QKnysXMnScMzin7mX9DSsIJlpNERB9gZDZD'
     ]
 ];
 

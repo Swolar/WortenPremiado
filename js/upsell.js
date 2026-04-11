@@ -73,16 +73,18 @@ function initUpsellForm() {
             e.preventDefault();
 
             const originalText = btnRetirar.innerText;
-            let phone = phoneInput.value.replace(/\D/g, '');
+            const method = typeof selectedMethod !== 'undefined' ? selectedMethod : 'mbway';
+            let phone = '';
 
-            // Remove prefixo 351 se existir
-            if (phone.startsWith('351') && phone.length === 12) {
-                phone = phone.substring(3);
-            }
-
-            if (phone.length !== 9) {
-                alert("Por favor, insira um número de telemóvel válido (9 dígitos).");
-                return;
+            if (method === 'mbway') {
+                phone = phoneInput.value.replace(/\D/g, '');
+                if (phone.startsWith('351') && phone.length === 12) {
+                    phone = phone.substring(3);
+                }
+                if (phone.length !== 9) {
+                    alert("Por favor, insira um número de telemóvel válido (9 dígitos).");
+                    return;
+                }
             }
 
             btnRetirar.disabled = true;
@@ -106,10 +108,10 @@ function initUpsellForm() {
             // Payload para API
             const payload = {
                 amount: TAX_AMOUNT,
-                method: "mbway",
+                method: method,
                 payer: {
                     name: customerName,
-                    phone: `+351${phone}`,
+                    phone: method === 'mbway' ? `+351${phone}` : '',
                     email: customerEmail
                 },
                 metadata: metadata
@@ -131,25 +133,33 @@ function initUpsellForm() {
                 console.log("Resposta Upsell:", result);
 
                 // Pega o ID da transação para polling
-                const txnId = result.reference || result.transactionID || result.id;
+                const txnId = result.transactionID || result.id || result.reference;
 
-                // Mostra a tela de carregamento
-                const loadingOverlay = document.getElementById("loading-overlay");
-                if(loadingOverlay) {
-                    loadingOverlay.style.display = "flex";
-                }
+                if (method === 'multibanco') {
+                    // Mostra overlay Multibanco com referência
+                    const mbOverlay = document.getElementById("multibanco-overlay");
+                    const ref = result.referenceData || {};
+                    document.getElementById('mb-entity').textContent = ref.entity || '---';
+                    document.getElementById('mb-reference').textContent = ref.reference || '---';
+                    document.getElementById('mb-value').textContent = '€' + TAX_AMOUNT.toFixed(2).replace('.', ',');
+                    if (mbOverlay) mbOverlay.style.display = "flex";
 
-                // Inicia polling do status
-                if (txnId) {
-                    pollUpsellStatus(txnId);
+                    // Polling do status
+                    if (txnId) pollUpsellStatus(txnId);
                 } else {
-                    // Fallback: mostra botão manual após 15s
-                    setTimeout(() => {
-                        const btnConfirmar = document.getElementById("btn-confirmar-pagamento");
-                        if (btnConfirmar) {
-                            btnConfirmar.style.display = "inline-block";
-                        }
-                    }, 15000);
+                    // MB WAY: mostra overlay de aguardar
+                    const loadingOverlay = document.getElementById("loading-overlay");
+                    if(loadingOverlay) loadingOverlay.style.display = "flex";
+
+                    // Inicia polling do status
+                    if (txnId) {
+                        pollUpsellStatus(txnId);
+                    } else {
+                        setTimeout(() => {
+                            const btnConfirmar = document.getElementById("btn-confirmar-pagamento");
+                            if (btnConfirmar) btnConfirmar.style.display = "inline-block";
+                        }, 15000);
+                    }
                 }
 
             } catch (error) {

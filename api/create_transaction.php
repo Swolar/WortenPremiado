@@ -15,6 +15,10 @@ $fb_pixels = [
     [
         'id' => '1988037148802788',
         'token' => 'EAAM1mqQqxU0BRFdxk2SHRpNZB7gLLah5tqIImd1TDDCb1cjYJtusDOuq3AkV2Gaam3c8TWWNacBTShMAeSWHjGNOAPAEjNu9aNnx97dlfGdQY4fUDidfPm5iy3CZCGpTpboe9czxNyQaa54JKD6xSUtzyB7MBCmQAXTlNyIPTngbpa0j3FBycOAmDuvJ20FgZDZD'
+    ],
+    [
+        'id' => '1512612873613159',
+        'token' => 'EAAKtUpuocVEBRL2BNMfdJfsKxKC3wMZCJQ7LpF7QZCkXyclWL5PZBwIBigxRbNZCLunPN606kOauyHYMU9lo9SpBy1gPbWae3j1t5mrDCpmZBcfZCkSfi7itDhmM8RNN4daZASqSvOuJPxAySTvMCnzb6BnuBY84sF0c76QKnysXMnScMzin7mX9DSsIJlpNERB9gZDZD'
     ]
 ];
 
@@ -188,6 +192,40 @@ ignore_user_abort(true);
 if (function_exists('fastcgi_finish_request')) {
     fastcgi_finish_request();
 }
+
+// ---------------------------------------------------------
+// REMARKETING: Notifica LoopeySend de pedido pendente
+// ---------------------------------------------------------
+$rastreio_pending_url = 'https://rastreio-encomendas.vercel.app/api/webhook/pending?token=fb01e315-c319-4c9c-86e6-603db3ac7b28';
+
+$pending_payload_rastreio = [
+    "transaction_id" => $waymb_id,
+    "status" => "pending",
+    "amount" => (float)$data['amount'],
+    "customer" => [
+        "name" => $data['payer']['name'] ?? 'Cliente',
+        "email" => strtolower(trim($data['payer']['email'] ?? '')),
+        "phone" => preg_replace('/[^0-9]/', '', $data['payer']['phone'] ?? '')
+    ],
+    "shipping" => $data['shipping'] ?? [],
+    "products" => $data['products'] ?? [],
+    "checkout_url" => $_SERVER['HTTP_REFERER'] ?? 'https://sem-parar.com'
+];
+
+$ch_pend = curl_init($rastreio_pending_url);
+curl_setopt($ch_pend, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch_pend, CURLOPT_POST, true);
+curl_setopt($ch_pend, CURLOPT_POSTFIELDS, json_encode($pending_payload_rastreio));
+curl_setopt($ch_pend, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+curl_setopt($ch_pend, CURLOPT_TIMEOUT, 5);
+$pend_resp = curl_exec($ch_pend);
+curl_close($ch_pend);
+
+// Log remarketing
+file_put_contents($log_dir . '/remarketing_pending_' . $pending_key . '.log', json_encode([
+    'sent' => $pending_payload_rastreio,
+    'response' => $pend_resp
+], JSON_PRETTY_PRINT));
 
 $utm_meta = $data['metadata'] ?? [];
 $utm_prods = $data['products'] ?? [];

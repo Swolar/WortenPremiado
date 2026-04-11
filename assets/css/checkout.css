@@ -770,3 +770,17 @@ body {
   color: #aaa;
   line-height: 1.5;
 }
+
+/* ========== REVIEWS ========== */
+.ck-reviews { padding: 20px 16px 0; }
+.ck-reviews-title { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.ck-review-card-review { background: #fff; border: 1px solid #e0e0e0; border-left: 3px solid #16a34a; border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+.ck-review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.ck-review-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.ck-review-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.ck-review-name-row { display: flex; align-items: center; gap: 8px; flex: 1; }
+.ck-review-name-row strong { font-size: 14px; color: #333; }
+.ck-review-stars { color: #FFB800; font-size: 13px; letter-spacing: 1px; }
+.ck-review-badge { font-size: 11px; color: #16a34a; border: 1px solid #16a34a; border-radius: 4px; padding: 2px 8px; font-weight: 600; margin-left: auto; }
+.ck-review-text-body { font-size: 13px; color: #555; line-height: 1.5; }
+.ck-review-confirmed { display: flex; align-items: center; gap: 6px; margin-top: 10px; font-size: 12px; color: #16a34a; font-weight: 600; }
